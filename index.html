@@ -23673,26 +23673,46 @@ function clearDraft(){
 function exportForRapport(){
   if(!cur) return;
   var QO={
-    c1:{l:"Pression externe clients",o:["Oui frequent","Oui rare","Pas encore","Non"]},
-    c2:{l:"Reputation et differenciation",o:["Differenciateur reconnu","Peut-etre","Non - prix avant tout","Ne sais pas"]},
-    c4:{l:"Vulnerabilite marche RSE",o:["Pret","Partiellement","En difficulte","Non realiste"]},
-    col1:{l:"Tension recrutement",o:["Probleme recurrent","Certains profils","Pas encore","Non"]},
-    col2:{l:"Engagement interne",o:["Clair et partage","Implicite","Pas vraiment","Non - preoccupe"]},
-    col3:{l:"Vulnerabilite RH",o:["Critique","Difficile","Anticipe","Pas pense"]},
-    col4:{l:"Conditions de travail",o:["Politiques ecrites","Partiellement","Cas par cas","Devrait faire"]},
-    co1:{l:"Conscience des couts",o:["Suit de pres","Idee globale","Ne mesure pas","Negligeable"]},
-    co2:{l:"Dependance ressources",o:["Risque identifie","Probablement","Diversifie","Non applicable"]},
-    co4:{l:"Actions existantes",o:["Structurees","Informelles","Reflechit","Pas priorite","Non applicable"]},
-    f1:{l:"Dependance fournisseurs",o:["Forte","Faible risque","Plusieurs sources","Non applicable"]},
-    f2:{l:"Connaissance chaine",o:["Bonne visibilite","Partielle","Jamais","Grands groupes - pas de levier","Non applicable"]},
-    f4:{l:"Vulnerabilite geographique",o:["Risque identifie","Sans plan","CH/EU","Non applicable"]},
-    g1:{l:"Gouvernance reelle",o:["Formelle","Semi-formel","Informel","Depend"]},
-    g2:{l:"Valeurs dans decisions",o:["Refuse assume","Accepte mal aise","Les deux","Pas encore"]},
-    g3:{l:"Transparence interne",o:["Transparent","Partiellement","Non","Ne sais pas"]},
-    g4:{l:"Continuite",o:["Plan formalise","Partiellement","Repose sur moi","Jamais formalise"]},
-    l1:{l:"Lien au territoire",o:["Priorite","Partiellement","Pertinence","Pas reflechi"]},
-    l2:{l:"Impact communaute",o:["Mesure","Positif non mesure","Pas reflechi","Non applicable"]},
-    l3:{l:"Engagement local",o:["Politique claire","Cas par cas","Rarement","Non"]}
+    c1:{l:"Pression externe clients",o:["Oui, c est devenu frequent","Oui, quelques fois mais encore rare","Pas encore, mais j anticipe que ca va venir","Non, pas dans mon secteur"],
+      c:["On avait les elements, on a repondu","On a repondu mais c etait approximatif","On n a pas su repondre correctement","On a perdu un contrat a cause de ca"]},
+    c2:{l:"Reputation et differenciation",o:["Oui, c est un element differenciateur reconnu","Peut-etre, mais on ne le mesure pas vraiment","Non, c est surtout le prix et la qualite technique","Je ne sais pas, on ne demande pas aux prospects"],
+      c:["Oui, clairement et structurement","Un peu, mais de maniere informelle","Non, on ne sait pas comment le formuler","Non, on prefere ne pas en faire un argument commercial"]},
+    c4:{l:"Vulnerabilite marche RSE",o:["Oui, on a deja les elements structures","Partiellement, on aurait besoin de formaliser","Non, on serait en difficulte","Ce scenario n est pas realiste pour notre secteur"],
+      c:["Les donnees (chiffres, indicateurs)","Une politique formalisee","Du temps pour s en occuper","On ne sait pas par ou commencer"]},
+    col1:{l:"Tension recrutement",o:["Oui, c est un probleme recurrent et preoccupant","Oui, sur certains profils specifiques","Non, mais je sens que ca pourrait changer","Non, pas de difficulte particuliere"],
+      c:["De la flexibilite et un bon equilibre vie pro/perso","Du sens - comprendre pourquoi l entreprise existe","Des perspectives d evolution et de formation","Des perspectives de developpement et d evolution de carriere","Je ne sais pas vraiment ce qu ils cherchent"]},
+    col2:{l:"Engagement interne",o:["Oui, c est clair et partage - on en parle regulierement","Oui, mais c est implicite - jamais vraiment formalise","Pas vraiment - chacun fait son travail","Non, et c est quelque chose qui me preoccupe"],
+      c:["Oui, mais je ne sais pas comment m y prendre","Oui, c est dans mes priorites pour cette annee","Pas forcement, ca fonctionne comme ca","Je n y avais pas vraiment reflechi avant aujourd hui"]},
+    col3:{l:"Vulnerabilite RH",o:["Ce serait critique - on a des dependances fortes","Difficile, mais on s en remettrait","On a anticipe ca - les competences sont partagees","Je n y ai pas pense"],
+      c:["Une meilleure remuneration","Plus de sens et d impact dans leur travail","Plus de flexibilite et d autonomie","Des perspectives de developpement et d evolution de carriere","Je ne sais pas vraiment ce qui les motive"]},
+    col4:{l:"Conditions de travail formalisees",o:["Oui, on a des politiques ecrites et connues de tous","Partiellement - certaines choses sont formalisees","Non, c est au cas par cas selon les personnes","Non, mais c est quelque chose qu on devrait faire"],
+      c:["De la flexibilite horaire ou teletravail","Des formations ou developpement professionnel","Des avantages sociaux informels","Pas grand chose pour le moment"]},
+    co1:{l:"Conscience des couts operationnels",o:["Oui, on suit ces postes de pres - on a des donnees","On a une idee globale mais pas de suivi precis","Non, ce n est pas quelque chose qu on mesure","Ces postes sont negligeables dans notre activite"],
+      c:["Oui, on a deja pris des mesures pour reduire","On y pense mais on n a pas encore agi","Non, pas encore de decision prise sur ce sujet"]},
+    co2:{l:"Dependance aux ressources",o:["Oui, clairement - c est un risque qu on a identifie","Probablement, mais on n a pas formalise ce risque","Non, on a diversifie nos sources","Non, notre activite ne cree pas ce type de dependance"],
+      c:["Un fournisseur ou prestataire unique","La hausse des prix de l energie","Des matieres premieres rares ou importees","Des delais de livraison imprevisibles","La reglementation sur certains produits ou materiaux"]},
+    co4:{l:"Actions existantes pour reduire la consommation",o:["Oui, on a des actions structurees et suivies","Oui, quelques initiatives mais non formalisees","On y reflechit mais on n a pas encore agi","Non, ce n est pas encore une priorite","Notre activite genere tres peu de dechets - non applicable"],
+      c:["Reduction de la consommation energetique","Gestion et tri des dechets","Reduction des deplacements professionnels","Choix de fournisseurs locaux ou responsables","Reduction du papier et du numerique"]},
+    f1:{l:"Dependance fournisseurs",o:["Oui, on a des dependances fortes et on en est conscient","Oui, mais on pense que le risque est faible","Non, on a plusieurs sources pour nos besoins principaux","Non, notre activite ne cree pas ce type de dependance"],
+      c:["Un fournisseur unique sur un produit ou service cle","Une relation de longue date difficile a remettre en question","Peu d alternatives disponibles sur le marche","Un cout de changement trop eleve","Une dependance geographique ou logistique"]},
+    f2:{l:"Connaissance de la chaine fournisseurs",o:["Oui, on a une bonne visibilite et on le verifie activement","Partiellement - on connait certains fournisseurs mais pas tous","Non, on ne leur a jamais pose la question","Nos principaux fournisseurs sont de grands groupes - on n a pas de levier direct","Non applicable - nos achats et prestations sont negligeables"],
+      c:["On ne sait pas comment aborder le sujet","On craint de fragiliser la relation commerciale","On manque de temps et de ressources","Ce sont de grands groupes - pas de levier direct","On pourrait agir sur les criteres de selection de nouveaux fournisseurs","On n y avait pas pense avant aujourd hui"]},
+    f4:{l:"Vulnerabilite geographique fournisseurs",o:["Oui, c est un risque qu on a clairement identifie","Oui, mais sans plan de contingence formalise","Non, nos fournisseurs sont principalement suisses ou europeens","Non, notre activite ne genere pas ce type de dependance"],
+      c:["On a des stocks de securite","On a identifie des fournisseurs alternatifs","On est en train de relocaliser certains achats","On n a pas encore de plan concret","On surveille la situation sans action formelle"]},
+    g1:{l:"Gouvernance et prise de decision",o:["On a des instances formelles - comite, conseil, processus defini","C est semi-formel - quelques personnes cles sont consultees","C est informel - je decide principalement seul","Ca depend du type de decision"],
+      c:["Oui, on a deja pris des decisions qu on a regrettees","Parfois, notamment sur les decisions strategiques","Non, ca fonctionne bien pour notre taille","Je n y avais pas reflechi sous cet angle"]},
+    g2:{l:"Valeurs dans les decisions",o:["Oui, j ai deja refuse - et je l assume clairement","Oui, j ai deja accepte quelque chose qui m a mis mal a l aise","Les deux m sont arrives","Non, je n ai pas encore eu a faire ce choix"],
+      c:["Oui, elles sont ecrites et connues de tous","Elles existent mais ne sont pas formalisees","Non, elles sont dans ma tete mais pas ailleurs","Non, et c est quelque chose que je voudrais faire"]},
+    g3:{l:"Transparence interne",o:["Oui, le processus est transparent et partage","Partiellement - certaines decisions sont expliquees, d autres non","Non, les decisions sont prises et communiquees sans explication","Je ne sais pas vraiment comment ils le percoivent"],
+      c:["La crainte de creer des attentes qu on ne peut pas tenir","Certaines decisions sont sensibles commercialement","On manque de temps et de structure pour le faire","On ne sait pas comment s y prendre","Je n y avais pas pense comme un enjeu important"]},
+    g4:{l:"Continuite sans le dirigeant",o:["Oui, on a un plan de continuite formalise","Partiellement - certaines choses sont documentees","Non, beaucoup repose sur moi personnellement","Je n ai jamais vraiment formalise ca"],
+      c:["Les relations clients cles","Les decisions financieres et contractuelles","La vision et la strategie de l entreprise","Les connaissances techniques ou metier","La culture et les valeurs de l entreprise"]},
+    l1:{l:"Lien au territoire local",o:["Oui, c est une priorite - on favorise le local activement","Partiellement - on le fait quand c est possible","Non, on recrute et achete la ou c est le plus pertinent","On n y a jamais vraiment reflechi comme une priorite"],
+      c:["Le cout - les alternatives locales sont plus cheres","L offre - les competences ou produits ne sont pas disponibles localement","L habitude - on travaille avec les memes depuis longtemps","On n a pas de politique claire sur ce sujet","Je n y avais pas pense sous cet angle"]},
+    l2:{l:"Impact sur la communaute locale",o:["Oui, on a un impact positif clair et on le mesure","Oui, on pense avoir un impact positif mais on ne le mesure pas","On n y a jamais vraiment reflechi","Notre activite n a pas vraiment d impact local visible"],
+      c:["L emploi local et les salaires dans la region","Les achats aupres d entreprises locales","Le soutien a des initiatives culturelles ou sportives","L impact environnemental sur le territoire","La formation et le developpement de competences locales"]},
+    l3:{l:"Engagement local",o:["Oui, on a une politique claire d engagement local","Oui, mais c est au cas par cas sans vraie strategie","Rarement - on recoit des demandes mais on dit souvent non","Non, ce n est pas quelque chose qu on fait"],
+      c:["L alignement avec nos valeurs et notre activite","Les demandes de nos collaborateurs","La visibilite et la reputation que ca nous apporte","Les sollicitations qu on recoit sans critere precis","On n a pas vraiment de criteres definis"]}
   };
   var sL={1:"Vulnerable",2:"Conscient",3:"En transition",4:"Solide"};
   var THL2={clients:"Clients et marche",collab:"Collaborateurs",conso:"Consommation et production",fourn:"Fournisseurs et partenaires",gouv:"Gouvernance",local:"Ancrage local"};
@@ -23729,7 +23749,8 @@ function exportForRapport(){
       if(txt!==undefined&&txt!==null&&txt!=="") L.push(q.l+": "+txt);
       if(ans2.cascade!==undefined&&ans2.cascade!==null){
         var cv=ans2.cascade;
-        var ct=Array.isArray(cv)?cv.map(function(i){return q.o[i]||i;}).join(", "):(q.o[cv]||cv);
+        var cascOpts=q.c||q.o;
+        var ct=Array.isArray(cv)?cv.map(function(i){return cascOpts[i]||i;}).join(", "):(cascOpts[cv]||cv);
         if(ct) L.push("  -> "+ct);
       }
     });
