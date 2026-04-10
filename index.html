@@ -23518,11 +23518,11 @@ function renderSynthesis(frag){
 
   var nav=div("nav");
   nav.appendChild(btn("btng","Retour",function(){prevTheme();}));
-  var brow=div("");brow.style.cssText="display:flex;gap:8px;";
-  var bgen=btn("btnp","Generer le rapport Word",function(){generateRapport();});
-  bgen.id="btn-generate";bgen.style.cssText="background:#3DAA44;border-color:#3DAA44;color:white;border:none;";
+  var brow=div("");brow.style.cssText="display:flex;gap:8px;flex-wrap:wrap;";
+  var bexp=btn("btnp","Exporter pour le rapport",function(){exportForRapport();});
+  bexp.style.cssText="background:#2A5C68;border-color:#2A5C68;color:white;border:none;";
   var bsav=btn("btng","Sauvegarder",function(){saveEntry();});
-  brow.appendChild(bgen);brow.appendChild(bsav);
+  brow.appendChild(bexp);brow.appendChild(bsav);
   nav.appendChild(brow);
   frag.appendChild(nav);
 }
@@ -23667,6 +23667,107 @@ function loadDraft(){
 
 function clearDraft(){
   try{localStorage.removeItem("kiact_draft");}catch(e){}
+}
+
+
+function exportForRapport(){
+  if(!cur) return;
+  var QO={
+    c1:{l:"Pression externe clients",o:["Oui frequent","Oui rare","Pas encore","Non"]},
+    c2:{l:"Reputation et differenciation",o:["Differenciateur reconnu","Peut-etre","Non - prix avant tout","Ne sais pas"]},
+    c4:{l:"Vulnerabilite marche RSE",o:["Pret","Partiellement","En difficulte","Non realiste"]},
+    col1:{l:"Tension recrutement",o:["Probleme recurrent","Certains profils","Pas encore","Non"]},
+    col2:{l:"Engagement interne",o:["Clair et partage","Implicite","Pas vraiment","Non - preoccupe"]},
+    col3:{l:"Vulnerabilite RH",o:["Critique","Difficile","Anticipe","Pas pense"]},
+    col4:{l:"Conditions de travail",o:["Politiques ecrites","Partiellement","Cas par cas","Devrait faire"]},
+    co1:{l:"Conscience des couts",o:["Suit de pres","Idee globale","Ne mesure pas","Negligeable"]},
+    co2:{l:"Dependance ressources",o:["Risque identifie","Probablement","Diversifie","Non applicable"]},
+    co4:{l:"Actions existantes",o:["Structurees","Informelles","Reflechit","Pas priorite","Non applicable"]},
+    f1:{l:"Dependance fournisseurs",o:["Forte","Faible risque","Plusieurs sources","Non applicable"]},
+    f2:{l:"Connaissance chaine",o:["Bonne visibilite","Partielle","Jamais","Grands groupes - pas de levier","Non applicable"]},
+    f4:{l:"Vulnerabilite geographique",o:["Risque identifie","Sans plan","CH/EU","Non applicable"]},
+    g1:{l:"Gouvernance reelle",o:["Formelle","Semi-formel","Informel","Depend"]},
+    g2:{l:"Valeurs dans decisions",o:["Refuse assume","Accepte mal aise","Les deux","Pas encore"]},
+    g3:{l:"Transparence interne",o:["Transparent","Partiellement","Non","Ne sais pas"]},
+    g4:{l:"Continuite",o:["Plan formalise","Partiellement","Repose sur moi","Jamais formalise"]},
+    l1:{l:"Lien au territoire",o:["Priorite","Partiellement","Pertinence","Pas reflechi"]},
+    l2:{l:"Impact communaute",o:["Mesure","Positif non mesure","Pas reflechi","Non applicable"]},
+    l3:{l:"Engagement local",o:["Politique claire","Cas par cas","Rarement","Non"]}
+  };
+  var sL={1:"Vulnerable",2:"Conscient",3:"En transition",4:"Solide"};
+  var THL2={clients:"Clients et marche",collab:"Collaborateurs",conso:"Consommation et production",fourn:"Fournisseurs et partenaires",gouv:"Gouvernance",local:"Ancrage local"};
+  var L=[];
+  L.push("=== PROFIL ===");
+  L.push("Nom: "+(cur.company.name||""));
+  L.push("Secteur: "+(cur.company.sector||""));
+  L.push("Taille: "+(cur.company.size||"")+" collaborateurs");
+  L.push("Clients: "+(cur.company.clients||""));
+  if(cur.company.context) L.push("Contexte: "+cur.company.context);
+  L.push("");
+  L.push("=== NOTES OUVERTURE ===");
+  var op=cur.opening||{};
+  if(op.q0) L.push("Contexte entreprise: "+op.q0);
+  if(op.q1) L.push("Tensions actuelles: "+op.q1);
+  if(op.q2) L.push("Vulnerabilites futures: "+op.q2);
+  if(op.q3) L.push("Ce qui existe deja: "+op.q3);
+  L.push("");
+  L.push("=== REPONSES PAR THEMATIQUE ===");
+  var ans=cur.answers||{};
+  var sc=cur.scores||{};
+  Object.keys(THL2).forEach(function(tid){
+    L.push("");
+    L.push("-- "+THL2[tid]+" (Score: "+(sc[tid]||"?")+"/4 - "+(sL[sc[tid]]||"?")+") --");
+    Object.keys(QO).forEach(function(qid){
+      var ans2=ans[qid];
+      if(!ans2) return;
+      var q=QO[qid];
+      // Only show questions from this theme
+      var thMap={c1:"clients",c2:"clients",c4:"clients",col1:"collab",col2:"collab",col3:"collab",col4:"collab",co1:"conso",co2:"conso",co4:"conso",f1:"fourn",f2:"fourn",f4:"fourn",g1:"gouv",g2:"gouv",g3:"gouv",g4:"gouv",l1:"local",l2:"local",l3:"local"};
+      if(thMap[qid]!==tid) return;
+      var mv=ans2.main;
+      var txt=Array.isArray(mv)?mv.map(function(i){return q.o[i]||i;}).join(", "):(q.o[mv]||mv);
+      if(txt!==undefined&&txt!==null&&txt!=="") L.push(q.l+": "+txt);
+      if(ans2.cascade!==undefined&&ans2.cascade!==null){
+        var cv=ans2.cascade;
+        var ct=Array.isArray(cv)?cv.map(function(i){return q.o[i]||i;}).join(", "):(q.o[cv]||cv);
+        if(ct) L.push("  -> "+ct);
+      }
+    });
+  });
+  L.push("");
+  L.push("=== SCORES DE RESILIENCE ===");
+  Object.keys(sc).forEach(function(tid){L.push((THL2[tid]||tid)+": "+sc[tid]+"/4 ("+(sL[sc[tid]]||"?")+")");});
+  if(cur.finalNotes){L.push("");L.push("=== NOTES CONSULTANT ===");L.push(cur.finalNotes);}
+  
+  var text=L.join("\n");
+  
+  // Show in a modal overlay
+  var overlay=div("");
+  overlay.id="export-overlay";
+  overlay.style.cssText="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;";
+  var modal=div("card");
+  modal.style.cssText="max-width:600px;width:100%;max-height:80vh;overflow-y:auto;background:#fff;border-radius:12px;padding:24px;";
+  var title=div("qlabel");title.textContent="Texte a copier dans Claude";modal.appendChild(title);
+  var inst=div("sub");
+  inst.style.cssText="font-size:13px;color:#666;margin-bottom:12px;line-height:1.5;";
+  inst.innerHTML='1. Copiez tout le texte ci-dessous<br>2. Ouvrez Claude.ai dans votre projet KiAct<br>3. Collez le texte et demandez : <strong>Generer le rapport</strong>';
+  modal.appendChild(inst);
+  var ta=document.createElement("textarea");
+  ta.value=text;
+  ta.style.cssText="width:100%;height:200px;font-size:12px;font-family:monospace;border:1px solid #E0DDD8;border-radius:8px;padding:10px;background:#F5F5F3;resize:none;";
+  modal.appendChild(ta);
+  var btnrow2=div("");btnrow2.style.cssText="display:flex;gap:10px;margin-top:14px;";
+  var bcopy=btn("btnp","Copier le texte",function(){
+    ta.select();document.execCommand("copy");
+    bcopy.textContent="Copie !";bcopy.style.background="#3B6D11";
+    setTimeout(function(){bcopy.textContent="Copier le texte";bcopy.style.background="#2A5C68";},2000);
+  });
+  var bclose=btn("btng","Fermer",function(){document.body.removeChild(overlay);});
+  btnrow2.appendChild(bcopy);btnrow2.appendChild(bclose);
+  modal.appendChild(btnrow2);
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+  ta.select();
 }
 
 loadStorage();
