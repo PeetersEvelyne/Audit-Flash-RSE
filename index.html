@@ -23169,13 +23169,13 @@ var THEMES = [
     {id:"col2",label:"Q2 - Engagement interne",text:"Est-ce que vos collaborateurs savent pourquoi l entreprise existe - au-dela de faire du chiffre ? Est-ce que ce pourquoi est partage ?",type:"single",options:["Oui, c est clair et partage - on en parle regulierement","Oui, mais c est implicite - jamais vraiment formalise","Pas vraiment - chacun fait son travail","Non, et c est quelque chose qui me preoccupe"],cascade:{trigger:[1,2],label:"Avez-vous envie de changer ca ?",type:"single",options:["Oui, mais je ne sais pas comment m y prendre","Oui, c est dans mes priorites pour cette annee","Pas forcement, ca fonctionne comme ca","Je n y avais pas vraiment reflechi avant aujourd hui"]}},
     {id:"col3",label:"Q3 - Vulnerabilite RH",text:"Si 2 ou 3 personnes cles partaient demain - pour aller chez un concurrent ou une entreprise qui correspond mieux a leurs valeurs - qu est-ce que ca changerait pour vous ?",type:"single",options:["Ce serait critique - on a des dependances fortes","Difficile, mais on s en remettrait","On a anticipe ca - les competences sont partagees","Je n y ai pas pense"],cascade:{trigger:[0,1],label:"Qu est-ce qui les retiendrait selon vous ? (2 max)",type:"multi",options:["Une meilleure remuneration","Plus de sens et d impact dans leur travail","Plus de flexibilite et d autonomie","Des perspectives de developpement et d evolution de carriere","Je ne sais pas vraiment ce qui les motive"]}},
     {id:"col4",label:"Q4 - Conditions de travail",text:"Est-ce que vous avez formalise ce que vous offrez a vos collaborateurs - au-dela du contrat de travail ? Flexibilite, formation, bien-etre, equite ?",type:"single",options:["Oui, on a des politiques ecrites et connues de tous","Partiellement - certaines choses sont formalisees","Non, c est au cas par cas selon les personnes","Non, mais c est quelque chose qu on devrait faire"],cascade:{trigger:[1,2],label:"Qu est-ce que vous offrez deja mais non formalise ? (plusieurs reponses)",type:"multi",options:["De la flexibilite horaire ou teletravail","Des formations ou developpement professionnel","Des avantages sociaux informels","Pas grand chose pour le moment"]}},
-    {id:"col5",label:"Q5 - Sante et securite",text:"La sante et la securite au travail sont-elles pilotees de facon structuree ?",type:"single",options:["Au cas par cas - aucun suivi particulier","On reagit aux incidents - pas de prevention","Seances et suivi reguliers, peu formalises","Systeme SST documente avec indicateurs et suivi"]}
+    {id:"col5",label:"Q5 - Sante et securite",text:"La sante et la securite au travail sont-elles pilotees de facon structuree ?",type:"single",options:["Systeme SST documente avec indicateurs et suivi","Seances et suivi reguliers, peu formalises","On reagit aux incidents - pas de prevention","Au cas par cas - aucun suivi particulier"]}
   ]},
   {id:"conso",label:"Consommation et production",questions:[
     {id:"co1",label:"Q1 - Conscience des couts",text:"Est-ce que vous avez une idee de ce que vous depensez en energie, en deplacements, en consommables ? Est-ce que ces postes ont evolue ces dernieres annees ?",type:"single",options:["Oui, on suit ces postes de pres - on a des donnees","On a une idee globale mais pas de suivi precis","Non, ce n est pas quelque chose qu on mesure","Ces postes sont negligeables dans notre activite"],cascade:{trigger:[0,1],label:"Cette evolution a-t-elle impacte vos decisions ?",type:"single",options:["Oui, on a deja pris des mesures pour reduire","On y pense mais on n a pas encore agi","Non, pas encore de decision prise sur ce sujet"]}},
     {id:"co2",label:"Q2 - Dependance aux ressources",text:"Est-ce qu il y a des ressources - matieres, energie, prestataires logistiques - dont vous dependez fortement et dont le cout ou la disponibilite pourrait devenir un probleme ?",type:"single",options:["Oui, clairement - c est un risque qu on a identifie","Probablement, mais on n a pas formalise ce risque","Non, on a diversifie nos sources","Non, notre activite ne cree pas ce type de dependance"],cascade:{trigger:[0,1],label:"Qu est-ce qui vous rend le plus vulnerable ? (plusieurs reponses)",type:"multi",options:["Un fournisseur ou prestataire unique","La hausse des prix de l energie","Des matieres premieres rares ou importees","Des delais de livraison imprevisibles","La reglementation sur certains produits ou materiaux"]}},
     {id:"co4",label:"Q4 - Actions existantes",text:"Est-ce que vous avez deja pris des mesures pour reduire votre consommation ou vos dechets - meme petites, meme informelles ?",type:"single",options:["Oui, on a des actions structurees et suivies","Oui, quelques initiatives mais non formalisees","On y reflechit mais on n a pas encore agi","Non, ce n est pas encore une priorite","Notre activite genere tres peu de dechets - non applicable"],cascade:{trigger:[0,1],label:"Sur quoi portent principalement ces actions ? (plusieurs reponses)",type:"multi",options:["Reduction de la consommation energetique","Gestion et tri des dechets","Reduction des deplacements professionnels","Choix de fournisseurs locaux ou responsables","Reduction du papier et du numerique"]}},
-    {id:"co5",label:"Q4b - Mobilite et deplacements",text:"Mesurez-vous l impact de vos deplacements professionnels et de votre flotte de vehicules ?",type:"single",options:["Non, jamais regarde","On en a conscience, pas de mesure","Quelques donnees collectees, non consolidees","Oui, suivi regulier et plan de reduction en place"]}
+    {id:"co5",label:"Q4b - Mobilite et deplacements",text:"Mesurez-vous l impact de vos deplacements professionnels et de votre flotte de vehicules ?",type:"single",options:["Oui, suivi regulier et plan de reduction en place","Quelques donnees collectees, non consolidees","On en a conscience, pas de mesure","Non, jamais regarde"]}
   ]},
   {id:"fourn",label:"Fournisseurs et partenaires",questions:[
     {id:"f1",label:"Q1 - Dependance fournisseurs",text:"Est-ce que vous avez des fournisseurs ou sous-traitants dont vous dependez fortement - un seul source, un seul prestataire cle ? Qu est-ce qui se passe si l un d eux disparait ou augmente brutalement ses prix ?",type:"single",options:["Oui, on a des dependances fortes et on en est conscient","Oui, mais on pense que le risque est faible","Non, on a plusieurs sources pour nos besoins principaux","Non, notre activite ne cree pas ce type de dependance"],cascade:{trigger:[0,1],label:"Qu est-ce qui cree cette dependance ? (plusieurs reponses)",type:"multi",options:["Un fournisseur unique sur un produit ou service cle","Une relation de longue date difficile a remettre en question","Peu d alternatives disponibles sur le marche","Un cout de changement trop eleve","Une dependance geographique ou logistique"]}},
@@ -23194,9 +23194,9 @@ var THEMES = [
     {id:"l3",label:"Q3 - Engagement local",text:"Est-ce que vous soutenez des initiatives locales - associations, ecoles, evenements, sport ? Comment vous decidez ce que vous soutenez et pourquoi ?",type:"single",options:["Oui, on a une politique claire d engagement local","Oui, mais c est au cas par cas sans vraie strategie","Rarement - on recoit des demandes mais on dit souvent non","Non, ce n est pas quelque chose qu on fait"],cascade:{trigger:[0,1],label:"Sur quoi basez-vous vos choix de soutien ? (plusieurs reponses)",type:"multi",options:["L alignement avec nos valeurs et notre activite","Les demandes de nos collaborateurs","La visibilite et la reputation que ca nous apporte","Les sollicitations qu on recoit sans critere precis","On n a pas vraiment de criteres definis"]}}
   ]}
   ,{id:"loyaute",label:"Loyaute et integrite",questions:[
-    {id:"ly1",label:"Q1 - Integrite et anti-corruption",text:"Avez-vous des regles claires sur les cadeaux, conflits d interet et la lutte contre la corruption ?",type:"single",options:["Non, jamais formalise","C est implicite, chacun sait","Quelques regles, mais pas ecrites ni partagees","Oui, regles ecrites, connues et appliquees"]},
-    {id:"ly2",label:"Q2 - Concurrence loyale",text:"Comment garantissez-vous l equite et la transparence dans vos offres, notamment sur les marches publics ?",type:"single",options:["On n y a jamais reflechi","On fait au cas par cas","On a des principes, peu formalises","Demarche claire et documentee"]},
-    {id:"ly3",label:"Q3 - Relations avec sous-traitants",text:"Tenez-vous vos engagements de delais et de paiement envers vos sous-traitants et fournisseurs ?",type:"single",options:["Pas de suivi particulier","On essaie, sans regle etablie","Globalement oui, sans formalisation","Oui, engagements suivis et fiables"]}
+    {id:"ly1",label:"Q1 - Integrite et anti-corruption",text:"Avez-vous des regles claires sur les cadeaux, conflits d interet et la lutte contre la corruption ?",type:"single",options:["Oui, regles ecrites, connues et appliquees","Quelques regles, mais pas ecrites ni partagees","C est implicite, chacun sait","Non, jamais formalise"]},
+    {id:"ly2",label:"Q2 - Concurrence loyale",text:"Comment garantissez-vous l equite et la transparence dans vos offres, notamment sur les marches publics ?",type:"single",options:["Demarche claire et documentee","On a des principes, peu formalises","On fait au cas par cas","On n y a jamais reflechi"]},
+    {id:"ly3",label:"Q3 - Relations avec sous-traitants",text:"Tenez-vous vos engagements de delais et de paiement envers vos sous-traitants et fournisseurs ?",type:"single",options:["Oui, engagements suivis et fiables","Globalement oui, sans formalisation","On essaie, sans regle etablie","Pas de suivi particulier"]}
   ]}
 ];
 
@@ -23396,7 +23396,7 @@ function renderTheme(frag){
   var ti=cur.themeIndex||0;
   var theme=THEMES[ti];
   var ans=cur.answers||{};
-  frag.appendChild(div("stepinfo","Etape "+(ti+3)+" / 9 - "+(cur.company.name||"")));
+  frag.appendChild(div("stepinfo","Etape "+(ti+3)+" / 10 - "+(cur.company.name||"")));
   var h=document.createElement("h2");h.textContent=theme.label;frag.appendChild(h);
   frag.appendChild(div("sub","Thematique "+(ti+1)+" sur 6"));
 
@@ -23445,10 +23445,10 @@ function renderTheme(frag){
     frag.appendChild(card);
   });
 
-  var isLast=ti===5;
+  var isLast=ti===6;
   var nav=div("nav");
   nav.appendChild(btn("btng","Retour",function(){prevTheme();}));
-  var stepLbl=div("");stepLbl.textContent="Thematique "+(ti+1)+" / 6";stepLbl.style.fontSize="12px";stepLbl.style.color="#999";
+  var stepLbl=div("");stepLbl.textContent="Thematique "+(ti+1)+" / 7";stepLbl.style.fontSize="12px";stepLbl.style.color="#999";
   nav.appendChild(stepLbl);
   nav.appendChild(btn("btnp",isLast?"Voir la carte de resilience":"Suivant",function(){isLast?computeAndSynth():nextTheme();}));
   frag.appendChild(nav);
@@ -23510,6 +23510,7 @@ function renderSynthesis(frag){
       if(Array.isArray(a.main))txt=a.main.map(function(i){return q.options[i];}).join(", ");
       else if(a.main!==undefined&&a.main!==null)txt=q.options[a.main];
       if(txt){var ar=div("ansrow");ar.innerHTML="<strong>"+q.label.split("-")[0].trim()+"</strong> - "+txt;card2.appendChild(ar);}
+      else{var ar2=div("ansrow");ar2.style.color="#999";ar2.innerHTML="<strong>"+q.label.split("-")[0].trim()+"</strong> - <em>Non repondu</em>";card2.appendChild(ar2);}
       if(a.cascade!==undefined&&a.cascade!==null&&q.cascade){
         var ct=Array.isArray(a.cascade)?a.cascade.map(function(i){return q.cascade.options[i];}).join(", "):q.cascade.options[a.cascade];
         if(ct){var ac=div("anscasc");ac.textContent="→ "+ct;card2.appendChild(ac);}
@@ -23720,11 +23721,11 @@ function exportForRapport(){
       c:["L emploi local et les salaires dans la region","Les achats aupres d entreprises locales","Le soutien a des initiatives culturelles ou sportives","L impact environnemental sur le territoire","La formation et le developpement de competences locales"]},
     l3:{l:"Engagement local",o:["Oui, on a une politique claire d engagement local","Oui, mais c est au cas par cas sans vraie strategie","Rarement - on recoit des demandes mais on dit souvent non","Non, ce n est pas quelque chose qu on fait"],
       c:["L alignement avec nos valeurs et notre activite","Les demandes de nos collaborateurs","La visibilite et la reputation que ca nous apporte","Les sollicitations qu on recoit sans critere precis","On n a pas vraiment de criteres definis"]},
-    col5:{l:"Sante et securite au travail",o:["Au cas par cas","On reagit aux incidents","Seances regulieres peu formalisees","Systeme SST documente"]},
-    co5:{l:"Mobilite et deplacements",o:["Jamais regarde","Conscience pas de mesure","Donnees non consolidees","Suivi et plan de reduction"]},
-    ly1:{l:"Integrite et anti-corruption",o:["Non formalise","Implicite","Quelques regles non ecrites","Regles ecrites et appliquees"]},
-    ly2:{l:"Concurrence loyale",o:["Non reflechi","Cas par cas","Principes peu formalises","Demarche documentee"]},
-    ly3:{l:"Relations sous-traitants",o:["Pas de suivi","On essaie sans regle","Globalement oui","Engagements suivis et fiables"]}
+    col5:{l:"Sante et securite au travail",o:["Systeme SST documente","Seances regulieres peu formalisees","On reagit aux incidents","Au cas par cas"]},
+    co5:{l:"Mobilite et deplacements",o:["Suivi et plan de reduction","Donnees non consolidees","Conscience pas de mesure","Jamais regarde"]},
+    ly1:{l:"Integrite et anti-corruption",o:["Regles ecrites et appliquees","Quelques regles non ecrites","Implicite","Non formalise"]},
+    ly2:{l:"Concurrence loyale",o:["Demarche documentee","Principes peu formalises","Cas par cas","Non reflechi"]},
+    ly3:{l:"Relations sous-traitants",o:["Engagements suivis et fiables","Globalement oui","On essaie sans regle","Pas de suivi"]}
   };
   var sL={1:"Vulnerable",2:"Conscient",3:"En transition",4:"Solide"};
   var THL2={clients:"Clients et marche",collab:"Collaborateurs",conso:"Consommation et production",fourn:"Fournisseurs et partenaires",gouv:"Gouvernance",local:"Ancrage local",loyaute:"Loyaute et integrite"};
@@ -23932,11 +23933,11 @@ function buildUserMessage(company,opening,answers,scores,finalNotes){
     l1:{l:"Lien territoire",o:["Priorite","Partiellement","Pertinence","Pas reflechi"]},
     l2:{l:"Impact communaute",o:["Mesure","Positif non mesure","Pas reflechi","Non applicable"]},
     l3:{l:"Engagement local",o:["Politique claire","Cas par cas","Rarement","Non"]},
-    col5:{l:"Sante et securite au travail",o:["Au cas par cas","On reagit aux incidents","Seances regulieres peu formalisees","Systeme SST documente"]},
-    co5:{l:"Mobilite et deplacements",o:["Jamais regarde","Conscience pas de mesure","Donnees non consolidees","Suivi et plan de reduction"]},
-    ly1:{l:"Integrite et anti-corruption",o:["Non formalise","Implicite","Quelques regles non ecrites","Regles ecrites et appliquees"]},
-    ly2:{l:"Concurrence loyale",o:["Non reflechi","Cas par cas","Principes peu formalises","Demarche documentee"]},
-    ly3:{l:"Relations sous-traitants",o:["Pas de suivi","On essaie sans regle","Globalement oui","Engagements suivis et fiables"]}
+    col5:{l:"Sante et securite au travail",o:["Systeme SST documente","Seances regulieres peu formalisees","On reagit aux incidents","Au cas par cas"]},
+    co5:{l:"Mobilite et deplacements",o:["Suivi et plan de reduction","Donnees non consolidees","Conscience pas de mesure","Jamais regarde"]},
+    ly1:{l:"Integrite et anti-corruption",o:["Regles ecrites et appliquees","Quelques regles non ecrites","Implicite","Non formalise"]},
+    ly2:{l:"Concurrence loyale",o:["Demarche documentee","Principes peu formalises","Cas par cas","Non reflechi"]},
+    ly3:{l:"Relations sous-traitants",o:["Engagements suivis et fiables","Globalement oui","On essaie sans regle","Pas de suivi"]}
   };
   var sL={1:"Vulnerable",2:"Conscient",3:"En transition",4:"Solide"};
   var L=[];
