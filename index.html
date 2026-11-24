@@ -672,7 +672,7 @@ function renderSynthesis(frag){
 
   var h2=document.createElement("h2");h2.textContent="Résumé des réponses et score retenu";h2.style.marginBottom="12px";frag.appendChild(h2);
   THEMES.forEach(function(t){
-    var tool=cur.scores?cur.scores[t.id]:null;
+    var tool=computeScores(cur.answers||{},cur.company)[t.id];if(tool===undefined)tool=null;
     var s=retained(cur,t.id),lv=levelFor(cur,t.id);
     var card2=div("card");
     var th=div("thhead");
@@ -895,7 +895,7 @@ function clearDraft(){try{localStorage.removeItem("kiact_draft");}catch(e){}}
 // ---------- Export pour le rapport ----------
 // Structure inchangée : === PROFIL ===, === NOTES OUVERTURE ===, === REPONSES PAR THEMATIQUE ===, === SCORES DE RESILIENCE ===.
 function buildExportText(c){
-  var L=[],ans=c.answers||{},tool=c.scores||{};
+  var L=[],ans=c.answers||{},tool=computeScores(ans,c.company);
   var line=function(tid){var s=retained(c,tid),lv=levelFor(c,tid);return lv?fmt(s)+"/4 ("+SC[lv].lv+")":"non évalué (aucune réponse comptée)";};
   L.push("=== PROFIL ===");
   L.push("Nom: "+(c.company.name||""));
