@@ -397,6 +397,8 @@ function qScore(q,a){
 function retained(c,tid){
   var o=c.overrides&&c.overrides[tid];
   if(o&&o.score!==""&&o.score!==null&&o.score!==undefined)return Number(o.score);
+  // Le score est recalculé à partir des réponses, afin que les entretiens déjà enregistrés suivent le barème en vigueur.
+  if(c.answers&&Object.keys(c.answers).length){var f=computeScores(c.answers,c.company)[tid];return (f===undefined)?null:f;}
   var s=c.scores?c.scores[tid]:null;return (s===undefined)?null:s;
 }
 
