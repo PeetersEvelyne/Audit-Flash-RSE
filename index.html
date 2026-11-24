@@ -92,7 +92,7 @@ table.hm td{padding:6px 3px}
 </div>
 <script>
 // KiAct · Outil d'entretien du Bilan Flash Durabilité
-// Version du 29 octobre 2026. Les identifiants des questions (c1, col1, etc.) et le format
+// Version du 24 novembre 2026 (seuils de niveau à x,5, barème de 5 questions relevé à 4, garde-fou Solide). Version précédente du 29 octobre 2026. Les identifiants des questions (c1, col1, etc.) et le format
 // des données enregistrées sont inchangés, pour que les entretiens existants restent lisibles.
 // scores : un score par option (1 à 4). null = option exclue du calcul.
 
@@ -118,7 +118,7 @@ var THEMES = [
     {id:"col1",label:"Q1. Tension sur le recrutement",exp:"Tension sur le recrutement",
      text:"Avez-vous des difficultés à recruter ou à garder certains profils en ce moment? Au-delà du salaire, que cherchent vos candidates et candidats?",type:"single",
      options:["Oui, c’est un problème récurrent et préoccupant","Oui, sur certains profils","Non, mais je sens que cela pourrait changer","Non, pas de difficulté particulière"],
-     scores:[1,2,3,3],
+     scores:[1,2,3,4],
      cascade:{trigger:[0,1],label:"Que cherchent-ils au-delà du salaire? (plusieurs réponses)",type:"multi",options:["De la flexibilité et un bon équilibre entre vie professionnelle et vie privée","Du sens, comprendre pourquoi l’entreprise existe","Des perspectives d’évolution et de formation","Je ne sais pas vraiment ce qu’ils cherchent"]}},
     {id:"col2",label:"Q2. Engagement interne",exp:"Engagement interne",
      text:"Vos collaboratrices et collaborateurs savent-ils pourquoi l’entreprise existe, au-delà du chiffre d’affaires? Cette raison d’être est-elle partagée?",type:"single",
@@ -149,7 +149,7 @@ var THEMES = [
     {id:"co2",label:"Q2. Dépendance aux ressources",exp:"Dépendance aux ressources",
      text:"Dépendez-vous fortement de ressources (matières, énergie, prestataires logistiques) dont le coût ou la disponibilité pourrait devenir un problème?",type:"single",
      options:["Oui, clairement, c’est un risque que nous avons identifié","Probablement, mais nous n’avons pas formalisé ce risque","Non, nous avons diversifié nos sources","Non, notre activité ne crée pas ce type de dépendance"],
-     scores:[2,1,3,null],
+     scores:[2,1,4,null],
      cascade:{trigger:[0,1],label:"Qu’est-ce qui vous rend le plus vulnérable? (plusieurs réponses)",type:"multi",options:["Un fournisseur ou un prestataire unique","La hausse des prix de l’énergie","Des matières premières rares ou importées","Des délais de livraison imprévisibles","La réglementation sur certains produits ou matériaux"]}},
     {id:"co4",label:"Q3. Actions de réduction",exp:"Actions de réduction existantes",
      text:"Avez-vous déjà pris des mesures pour réduire votre consommation ou vos déchets, même petites ou informelles?",type:"single",
@@ -165,7 +165,7 @@ var THEMES = [
     {id:"f1",label:"Q1. Dépendance aux fournisseurs",exp:"Dépendance aux fournisseurs",
      text:"Dépendez-vous fortement de certains fournisseurs ou sous-traitants (source unique, prestataire clé)? Que se passerait-il si l’un d’eux disparaissait ou augmentait brutalement ses prix?",type:"single",
      options:["Oui, nous avons des dépendances fortes et nous en sommes conscients","Oui, mais nous pensons que le risque est faible","Non, nous avons plusieurs sources pour nos besoins principaux","Non, notre activité ne crée pas ce type de dépendance"],
-     scores:[2,2,3,null],
+     scores:[2,2,4,null],
      cascade:{trigger:[0,1],label:"Qu’est-ce qui crée cette dépendance? (plusieurs réponses)",type:"multi",options:["Un fournisseur unique pour un produit ou un service clé","Une relation ancienne, difficile à remettre en question","Peu d’alternatives sur le marché","Un coût de changement trop élevé","Une dépendance géographique ou logistique"]}},
     {id:"f2",label:"Q2. Connaissance de la chaîne d’approvisionnement",exp:"Connaissance de la chaîne d’approvisionnement",
      text:"Connaissez-vous les pratiques de vos principaux fournisseurs et prestataires, y compris vos logiciels et plateformes? Pour les grands éditeurs, avez-vous défini des critères sociaux ou environnementaux dans vos choix?",type:"single",
@@ -175,7 +175,7 @@ var THEMES = [
     {id:"f4",label:"Q3. Dépendance géographique",exp:"Dépendance géographique",
      text:"Dépendez-vous de fournisseurs situés hors de Suisse ou d’Europe? Comment gérez-vous ce risque?",type:"single",
      options:["Oui, c’est un risque que nous avons clairement identifié","Oui, mais sans plan de repli formalisé","Non, nos fournisseurs sont principalement suisses ou européens","Non, notre activité ne crée pas ce type de dépendance"],
-     scores:[2,2,3,null],
+     scores:[2,2,4,null],
      cascade:{trigger:[0,1],label:"Comment gérez-vous ce risque actuellement? (plusieurs réponses)",type:"multi",options:["Nous avons des stocks de sécurité","Nous avons identifié des fournisseurs de remplacement","Nous relocalisons certains achats","Nous n’avons pas encore de plan concret","Nous surveillons la situation, sans action formelle"]}}
   ]},
   {id:"gouv",label:"Gouvernance",questions:[
@@ -188,6 +188,7 @@ var THEMES = [
      text:"Vous est-il arrivé de refuser un client, un contrat ou un partenariat contraire à vos valeurs? Ou, à l’inverse, d’accepter quelque chose qui vous a mis mal à l’aise?",type:"single",
      options:["Oui, j’ai déjà refusé, et je l’assume clairement","Oui, j’ai déjà accepté quelque chose qui m’a mis mal à l’aise","Les deux me sont arrivés","Non, je n’ai pas encore eu à faire ce choix"],
      scores:[3,2,2,2],
+     upgrade:{main:0,casc:0,score:4},
      cascade:{trigger:[0,1,2],label:"Vos valeurs sont-elles formalisées quelque part?",type:"single",options:["Oui, elles sont écrites et connues de toutes et tous","Elles existent, mais ne sont pas formalisées","Non, elles sont dans ma tête, mais nulle part ailleurs","Non, et je voudrais le faire"]}},
     {id:"g3",label:"Q3. Transparence interne",exp:"Transparence interne",
      text:"Votre personnel sait-il comment les décisions importantes sont prises? Dispose-t-il d’un espace pour s’exprimer?",type:"single",
@@ -356,10 +357,30 @@ var SC = {
 };
 
 // ---------- Scores ----------
-// Le niveau correspond à la partie entière du score : 2,67 reste « Conscient » tant que 3 n'est pas atteint.
-function levelOf(s){if(s===null||s===undefined||isNaN(s))return null;return Math.max(1,Math.min(4,Math.floor(s+1e-9)));}
+// Seuils du 24 novembre 2026 : Vulnérable jusqu'à 1,50, Conscient de 1,51 à 2,50, En transition de 2,51 à 3,50, Solide dès 3,51.
+function levelOf(s){if(s===null||s===undefined||isNaN(s))return null;return s>3.5+1e-9?4:s>2.5+1e-9?3:s>1.5+1e-9?2:1;}
+// Garde-fou : une réponse cotée 1 exclut le niveau Solide, sauf score corrigé par la consultante.
+function hasOne(c,tid){
+  var t=null;THEMES.forEach(function(x){if(x.id===tid)t=x;});if(!t)return false;
+  var ans=c.answers||{},found=false;
+  activeQuestions(t,c).forEach(function(q){if(qScore(q,ans[q.id]).s===1)found=true;});
+  return found;
+}
+function levelFor(c,tid){
+  var lv=levelOf(retained(c,tid));
+  var o=c.overrides&&c.overrides[tid];
+  var corrige=o&&o.score!==""&&o.score!==null&&o.score!==undefined;
+  if(lv===4&&!corrige&&hasOne(c,tid))lv=3;
+  return lv;
+}
 function fmt(s){if(s===null||s===undefined||isNaN(s))return "-";var r=Math.round(s*100)/100;return (r%1===0?String(r):r.toFixed(2).replace(/0$/,"")).replace(".",",");}
 function optScore(q,i){if(!q.scores)return null;var v=q.scores[i];return (v===undefined)?null:v;}
+// Score de la réponse principale, relevé lorsque la sous-réponse le justifie (cas de g2 : refus assumé et valeurs écrites et connues = 4).
+function mainScore(q,a){
+  if(!a||a.main===undefined||a.main===null||Array.isArray(a.main))return null;
+  if(q.upgrade&&a.main===q.upgrade.main&&a.cascade===q.upgrade.casc)return q.upgrade.score;
+  return optScore(q,a.main);
+}
 // Score effectif d'une question : celui de l'option choisie ; si l'option est exclue et que la
 // sous-question porte un score (cas de c1), on compte la sous-réponse.
 function cascScore(q,a){
@@ -369,7 +390,7 @@ function cascScore(q,a){
 }
 function qScore(q,a){
   if(!a||a.main===undefined||a.main===null||Array.isArray(a.main))return {s:null,src:null};
-  var s=optScore(q,a.main);if(s!==null)return {s:s,src:"main"};
+  var s=mainScore(q,a);if(s!==null)return {s:s,src:"main"};
   var cs=cascScore(q,a);if(cs!==null)return {s:cs,src:"casc"};
   return {s:null,src:null};
 }
@@ -463,7 +484,7 @@ function renderHome(frag){
     item.appendChild(left);
     var dots=div("dots");
     THEMES.forEach(function(t){
-      var s=retained(c,t.id),lv=levelOf(s);
+      var s=retained(c,t.id),lv=levelFor(c,t.id);
       var d=document.createElement("div");d.className="dot";
       d.style.background=lv?SC[lv].bg:"#E0DDD8";
       d.title=t.label+" : "+(lv?fmt(s)+" sur 4, "+SC[lv].lv:"non évalué");
@@ -621,7 +642,7 @@ function renderSynthesis(frag){
   thead.appendChild(hrow);tbl.appendChild(thead);
   var tbody=document.createElement("tbody");
   THEMES.forEach(function(t){
-    var s=retained(cur,t.id),lv=levelOf(s);
+    var s=retained(cur,t.id),lv=levelFor(cur,t.id);
     var row=document.createElement("tr");
     var td0=document.createElement("td");td0.className="hmlabel";td0.textContent=t.label;row.appendChild(td0);
     for(var i=1;i<=4;i++){
@@ -643,14 +664,14 @@ function renderSynthesis(frag){
     var lt=document.createElement("span");lt.textContent=SC[k].lv+", "+SC[k].act;li.appendChild(lt);leg.appendChild(li);
   });
   card.appendChild(leg);
-  card.appendChild(div("legnote","Le niveau correspond au chiffre entier atteint. Par exemple, 2,67 reste au niveau Conscient."));
+  card.appendChild(div("legnote","Un niveau est atteint dès que le score dépasse la moitié de l’intervalle. Par exemple, 2,67 est au niveau En transition et 2,5 reste au niveau Conscient. Une réponse cotée 1 exclut le niveau Solide."));
   frag.appendChild(card);
   frag.appendChild(div("divider",""));
 
   var h2=document.createElement("h2");h2.textContent="Résumé des réponses et score retenu";h2.style.marginBottom="12px";frag.appendChild(h2);
   THEMES.forEach(function(t){
     var tool=cur.scores?cur.scores[t.id]:null;
-    var s=retained(cur,t.id),lv=levelOf(s);
+    var s=retained(cur,t.id),lv=levelFor(cur,t.id);
     var card2=div("card");
     var th=div("thhead");
     var tit=div("thtitle");tit.textContent=t.label;th.appendChild(tit);
@@ -663,7 +684,7 @@ function renderSynthesis(frag){
       var txt="",sc=null,has=a.main!==undefined&&a.main!==null&&!(Array.isArray(a.main)&&!a.main.length);
       if(has){
         if(Array.isArray(a.main)){txt=a.main.map(function(i){return q.options[i];}).join(", ");}
-        else{txt=q.options[a.main];sc=optScore(q,a.main);}
+        else{txt=q.options[a.main];sc=mainScore(q,a);}
       }
       var ar=div("ansrow");
       if(has)ar.innerHTML="<strong>"+esc(qNum(qi))+"</strong> "+esc(txt)+" <span class='ansscore'>"+(sc===null?"exclu du calcul":"score "+sc)+"</span>";
@@ -873,7 +894,7 @@ function clearDraft(){try{localStorage.removeItem("kiact_draft");}catch(e){}}
 // Structure inchangée : === PROFIL ===, === NOTES OUVERTURE ===, === REPONSES PAR THEMATIQUE ===, === SCORES DE RESILIENCE ===.
 function buildExportText(c){
   var L=[],ans=c.answers||{},tool=c.scores||{};
-  var line=function(tid){var s=retained(c,tid),lv=levelOf(s);return lv?fmt(s)+"/4 ("+SC[lv].lv+")":"non évalué (aucune réponse comptée)";};
+  var line=function(tid){var s=retained(c,tid),lv=levelFor(c,tid);return lv?fmt(s)+"/4 ("+SC[lv].lv+")":"non évalué (aucune réponse comptée)";};
   L.push("=== PROFIL ===");
   L.push("Nom: "+(c.company.name||""));
   if(c.company.date)L.push("Date de l’entretien: "+c.company.date);
@@ -899,7 +920,7 @@ function buildExportText(c){
       var a=ans[q.id];if(!a)return;
       var mv=a.main;if(mv===undefined||mv===null)return;
       var txt=Array.isArray(mv)?mv.map(function(i){return q.options[i];}).join(", "):q.options[mv];
-      var sc=Array.isArray(mv)?null:optScore(q,mv);
+      var sc=Array.isArray(mv)?null:mainScore(q,a);
       L.push(q.exp+(q.module?" (module sectoriel, grille "+q.ref+")":"")+": "+txt+" ["+(sc===null?"exclu du calcul":"score "+sc)+"]");
       if(a.cascade!==undefined&&a.cascade!==null&&q.cascade){
         var cv=a.cascade;
